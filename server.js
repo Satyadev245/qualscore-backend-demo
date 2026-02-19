@@ -6,7 +6,12 @@ const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['http://127.0.0.1:8080/'], // replace with your actual frontend URL
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 /* ===============================
