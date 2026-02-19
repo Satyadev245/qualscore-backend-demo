@@ -13,8 +13,11 @@ app.use(express.json());
    Google Sheets Setup
 ================================ */
 
+// Parse the Google service account JSON from env
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+
 const auth = new google.auth.GoogleAuth({
-  keyFile: "service-account.json",
+  keyFile: serviceAccount,
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
