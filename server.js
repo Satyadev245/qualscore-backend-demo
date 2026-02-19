@@ -20,7 +20,7 @@ const auth = new google.auth.GoogleAuth({
 
 const sheets = google.sheets({ version: "v4", auth });
 
-const SPREADSHEET_ID = "1Ag2Gh-eI_fS5lqg_2AERg2Rky3rz7iZrq9T1Wb8mEgI"
+const GOOGLE_SHEET_ID = "1Ag2Gh-eI_fS5lqg_2AERg2Rky3rz7iZrq9T1Wb8mEgI"
 
 /* ===============================
    Mail Transporter
@@ -46,7 +46,7 @@ app.post("/api/book-demo", async (req, res) => {
 
     /* Save to Google Sheets */
     await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
+      spreadsheetId: GOOGLE_SHEET_ID,
       range: "Sheet1!A:H",
       valueInputOption: "USER_ENTERED",
       requestBody: {
