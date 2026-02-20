@@ -6,23 +6,15 @@ const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 
 const app = express();
-app.use(cors({
-  origin: ['http://localhost:8080/'], // replace with your actual frontend URL
-  methods: ['GET', 'POST'],
-  credentials: true,
-}));
-
+app.use(cors());
 app.use(express.json());
 
 /* ===============================
    Google Sheets Setup
 ================================ */
 
-// Parse the Google service account JSON from env
-const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-
 const auth = new google.auth.GoogleAuth({
-  credentials: serviceAccount,
+  keyFile: "service-account.json",
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
